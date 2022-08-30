@@ -1,0 +1,19 @@
+{
+  "name": "login-register-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlissonDahlem/login-register-form.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlissonDahlem/login-register-form/issues"
+  },
+  "homepage": "https://github.com/AlissonDahlem/login-register-form#readme"
+}
