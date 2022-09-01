@@ -4,9 +4,9 @@
   "description": "",
   "main": "./build/server",
   "scripts": {
-    "build": "/bin/sh tsc.sh",
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_PATH=./build node build/server.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/index.ts"
   },
   "author": "",
   "license": "ISC",

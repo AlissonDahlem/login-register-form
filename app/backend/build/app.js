@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = exports.App = void 0;
-var express = require("express");
-var App = /** @class */ (function () {
-    function App() {
+const express = require("express");
+class App {
+    constructor() {
         this.app = express();
         this.config();
-        this.app.get('/', function (req, res) { return res.json({ ok: true }); });
+        this.app.get('/serverStatus', (req, res) => res.json({ ok: true }));
     }
-    App.prototype.config = function () {
-        var accessControl = function (_req, res, next) {
+    config() {
+        const accessControl = (_req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
             res.header('Access-Control-Allow-Headers', '*');
@@ -17,11 +17,11 @@ var App = /** @class */ (function () {
         };
         this.app.use(express.json());
         this.app.use(accessControl);
-    };
-    App.prototype.start = function (PORT) {
-        this.app.listen(PORT, function () { return console.log("Running on port " + PORT); });
-    };
-    return App;
-}());
+    }
+    start(PORT) {
+        this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+    }
+}
 exports.App = App;
 exports.app = new App().app;
+//# sourceMappingURL=app.js.map

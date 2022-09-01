@@ -8,7 +8,7 @@ class App {
 
     this.config();
 
-    this.app.get('/', (req, res) => res.json({ ok: true }));
+    this.app.get('/serverStatus', (req, res) => res.json({ ok: true }));
   }
 
   private config():void {
