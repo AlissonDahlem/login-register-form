@@ -3,13 +3,11 @@ import db from '.';
 
 class Users extends Model {
   declare id: number;
-  declare name: string;
-  declare lastname: string;
+  declare firstName: string;
+  declare lastName: string;
   declare email: string;
   declare password: string;
   declare role: string;
-  declare createdAt: string;
-  declare updatedAt: string;
 }
 
 Users.init({
@@ -19,13 +17,15 @@ Users.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  name: {
+  firstName: {
     type: STRING,
     allowNull: false,
+    field: 'first_name',
   },
-  lastname: {
+  lastName: {
     type: STRING,
     allowNull: false,
+    field: 'last_name'
   },
   email: {
     type: STRING,
@@ -39,18 +39,11 @@ Users.init({
     type: STRING,
     allowNull: false,
   },
-  createdAt: {
-    type: STRING,
-    allowNull: false,
-  },
-  updatedAt: {
-    type: STRING,
-    allowNull: false,
-  }
 }, {
   underscored: true,
   sequelize: db,
   modelName: 'users',
+  timestamps: true,
 });
 
 export default Users;

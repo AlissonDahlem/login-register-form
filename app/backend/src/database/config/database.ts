@@ -2,11 +2,11 @@ import 'dotenv/config';
 import { Options } from 'sequelize';
 
 const config: Options = {
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: 'SIMPLE_USERS_PRODUCTS',
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || '6532445fdsg',
+  database: 'ERP_DB',
+  host: process.env.DB_HOST || 'localhost',
+  port: Number(process.env.DB_PORT) || 3002,
   dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',

@@ -1,12 +1,11 @@
 version: '3.9'
-
 services:
   frontend:
     build: ./frontend
     ports:
-     - 3000:3000
+      - 3000:3000
     platform: linux/x86_64
-    working_dir: /frontend
+    working_dir: /app-frontend
     depends_on:
       backend:
         condition: service_healthy
@@ -15,24 +14,22 @@ services:
       timeout: 10s
       retries: 5
   backend:
-    container_name: backend
+    container_name: app_backend
     build: ./backend
-    ports: 
+    ports:
       - 3001:3001
     platform: linux/x86_64
-    working_dir: /backend
+    working_dir: /app-backend
     depends_on:
       db:
         condition: service_healthy
     environment:
       - APP_PORT=3001
-      - JWT_SECRET=5asd5a4sdfdsa32
+      - JWT_SECRET=jwt_secret
       - DB_USER=root
-      - DB_PASSWORD=6532445fdsg
+      - DB_PASS=123456
       - DB_HOST=db
       - DB_PORT=3306
-    volumes:
-      - ./:/home/alissondahlem/Desktop/projetosPessoais/login-register-form/app/backend
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
@@ -42,13 +39,13 @@ services:
     container_name: db
     platform: linux/x86_64
     ports:
-     - 3002:3306
+      - 3002:3306
     environment:
-    - MYSQL_ROOT_PASSWORD=6532445fdsg
+      - MYSQL_ROOT_PASSWORD=123456
     restart: 'always'
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
       timeout: 10s
       retries: 5
     cap_add:
-     - SYS_NICE # Deve omitir alertas menores
+      - SYS_NICE # Deve omitir alertas menores
