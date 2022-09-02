@@ -1,14 +1,21 @@
 import { encodeBase64, compare } from 'bcryptjs';
 import Users from '../database/models/UserModel';
 import PasswordValidator = require('password-validator');
+import * as EmailValidator from 'email-validator'
 
 export default class UserService {
   public validateEmailExists = async (email: string) => {
     const user = await Users.findOne({where: {email}}) as Users
-    if( user ) {
+    if (user) {
       const error = new Error('Email already exists');
       error.name = 'conflict'
       throw error;
+    }
+    const validateEmail = EmailValidator.validate(email);
+    if (!validateEmail) {
+      const error = new Error('Email must be valid')
+      error.name = 'missingFields'
+      throw error
     }
   }
 
@@ -25,10 +32,9 @@ export default class UserService {
     const [verifiedPassword] = schema.validate(password, { details: true });
     if ( !!verifiedPassword ) {
       const error = new Error(verifiedPassword.message)
-      error.name = 'conflict';
+      error.name = 'missingFields';
       throw error
     }
-    return verifiedPassword;
   }
 
   public createUser = async (firstName: string, lastName: string, email: string, password: string) => {

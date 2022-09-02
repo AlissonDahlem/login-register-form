@@ -6,6 +6,9 @@ const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
     case 'conflict':
       res.status(409).json({ message });
       break;
+    case 'missingFields':
+      res.status(400).json({ message });
+      break;
     default:
       res.status(500).json({ message });
       break;
