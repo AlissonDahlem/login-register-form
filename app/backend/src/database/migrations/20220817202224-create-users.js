@@ -18,7 +18,10 @@ module.exports = {
       },
       email: Sequelize.STRING,
       password: Sequelize.STRING,
-      role: Sequelize.STRING,
+      roleId: {
+        type: Sequelize.STRING,
+        field: 'role_id'
+      },
       updatedAt: {
         type: Sequelize.DATE,
         field: 'updated_at'

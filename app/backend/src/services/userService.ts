@@ -1,4 +1,5 @@
-import { encodeBase64, compare } from 'bcryptjs';
+import * as bcrypt from 'bcryptjs'
+// import { encodeBase64, compare, hash } from 'bcryptjs';
 import Users from '../database/models/UserModel';
 import PasswordValidator = require('password-validator');
 import * as EmailValidator from 'email-validator'
@@ -37,15 +38,23 @@ export default class UserService {
     }
   }
 
+  public encriptPassword = (password: string) => {
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    return hash
+  }
+
   public createUser = async (firstName: string, lastName: string, email: string, password: string) => {
-    const validateEmail = await this.validateEmailExists(email);
-    const validatedPassword = await this.validatePassword(password)
+    await this.validateEmailExists(email);
+    await this.validatePassword(password)
+    const encripted = this.encriptPassword(password)
     await Users.create({
-      firstName,
-      lastName,
-      email,
-      password,
-      role: 'user'
-    })
+        firstName,
+        lastName,
+        email,
+        password: encripted,
+        role: '0'
+      })
   }
 }

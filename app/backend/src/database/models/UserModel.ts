@@ -1,5 +1,6 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
+import Roles from './roleModel';
 
 class Users extends Model {
   declare id: number;
@@ -7,7 +8,7 @@ class Users extends Model {
   declare lastName: string;
   declare email: string;
   declare password: string;
-  declare role: string;
+  declare role: number;
 }
 
 Users.init({
@@ -35,9 +36,11 @@ Users.init({
     type: STRING,
     allowNull: false,
   },
-  role: {
-    type: STRING,
+  roleId: {
+    type: INTEGER,
     allowNull: false,
+    primaryKey: true,
+    field: 'role_id'
   },
 }, {
   underscored: true,
@@ -45,5 +48,11 @@ Users.init({
   modelName: 'users',
   timestamps: true,
 });
+
+Users.belongsTo(Roles, {
+  foreignKey: 'role_id',
+  targetKey: 'id',
+  as: 'roleId'
+})
 
 export default Users;
