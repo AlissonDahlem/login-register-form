@@ -50,9 +50,9 @@ Users.init({
 });
 
 Users.belongsTo(Roles, {
-  foreignKey: 'role_id',
+  foreignKey: 'roleId',
   targetKey: 'id',
-  as: 'roleId'
+  as: 'role_id'
 })
 
 export default Users;

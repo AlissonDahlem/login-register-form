@@ -54,7 +54,7 @@ export default class UserService {
         lastName,
         email,
         password: encripted,
-        role: '0'
+        roleId: '1'
       })
   }
 }
