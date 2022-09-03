@@ -8,7 +8,7 @@
   width: 40vh;
 }
 
-#loginText {
+.loginText {
   margin-top: 50%;
 }
 
@@ -23,7 +23,7 @@
   background-image: linear-gradient(to right top, #3bddff, #64daff, #81d7ff, #99d4fe, #acd2f9, #a4cafc, #a1c1fe, #a1b7ff, #98a1ff, #a085ff, #b560ff, #d200ff);
 }
 
-#loginButton {
+.loginButton {
   background-image: linear-gradient(to right, #3bddff, #64daff, #81d7ff, #99d4fe, #acd2f9, #a4cafc, #a1c1fe, #a1b7ff, #98a1ff, #a085ff, #b560ff, #d200ff);
   width: 80%;
   height: 6%;
@@ -31,24 +31,24 @@
   margin-top: 20%;
 }
 
-#loginButton:hover {
+.loginButton:hover {
   transition: 0.3s;
   cursor: pointer;
   background-image: linear-gradient(to right, #a5e5f2, #afe4f5, #b9e3f7, #c3e2f6, #cce1f5, #cadef8, #cadafa, #ccd5fc, #cbcbff, #d0bfff, #dab1ff, #e8a1f8);
 }
 
-#signUpButton {
+.signUpButton {
   margin-top: 50%;
   transition: 0.3s;
 }
 
-#signUpButton:hover {
+.signUpButton:hover {
   color:rgb(95, 95, 95);
   transition: 0.3s;
   cursor: pointer;
 }
 
-#loginForm {
+.loginForm {
   margin-top: 10%;
   width: 80%;
   display: flex;
@@ -56,12 +56,12 @@
   align-items: left;
 }
 
-#loginForm p {
+.loginForm p {
   margin-top: 8px;
   margin-bottom: 5px;
 }
 
-#loginForm h2 {
+.loginForm h2 {
   align-self: flex-end;
   text-decoration: none;
   font-size: 13px;
@@ -69,7 +69,7 @@
   transition: 0.3s;
 }
 
-#loginForm h2:hover{
+.loginForm h2:hover{
   color: rgb(121, 121, 121);
   transition: 0.3s;
   cursor: pointer;
@@ -80,4 +80,29 @@
   width: 100%;
   margin-top: 10px;
   margin-bottom: 15px
+}
+
+.registerButton {
+  background-image: linear-gradient(to right, #3bddff, #64daff, #81d7ff, #99d4fe, #acd2f9, #a4cafc, #a1c1fe, #a1b7ff, #98a1ff, #a085ff, #b560ff, #d200ff);
+  width: 80%;
+  height: 6%;
+  border-radius: 50px;
+  margin-top: 20%;
+}
+
+.registerButton:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #a5e5f2, #afe4f5, #b9e3f7, #c3e2f6, #cce1f5, #cadef8, #cadafa, #ccd5fc, #cbcbff, #d0bfff, #dab1ff, #e8a1f8);
+}
+
+.AlreadyRegisteredButton {
+  margin-top: 15%;
+  transition: 0.3s;
+}
+
+.AlreadyRegisteredButton:hover {
+  color:rgb(95, 95, 95);
+  transition: 0.3s;
+  cursor: pointer;
 }
