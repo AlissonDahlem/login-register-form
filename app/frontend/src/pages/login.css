@@ -96,6 +96,11 @@
   background-image: linear-gradient(to right, #a5e5f2, #afe4f5, #b9e3f7, #c3e2f6, #cce1f5, #cadef8, #cadafa, #ccd5fc, #cbcbff, #d0bfff, #dab1ff, #e8a1f8);
 }
 
+.registerButton:disabled {
+  opacity: 0.2;
+  color: black
+}
+
 .AlreadyRegisteredButton {
   margin-top: 15%;
   transition: 0.3s;
