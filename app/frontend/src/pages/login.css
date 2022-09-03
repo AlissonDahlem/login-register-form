@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 20px;
   height: 70vh;
   width: 40vh;
 }
@@ -82,12 +82,19 @@
   margin-bottom: 15px
 }
 
+.linhaVermelha {
+  border: 1px solid red;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 15px
+}
+
 .registerButton {
   background-image: linear-gradient(to right, #3bddff, #64daff, #81d7ff, #99d4fe, #acd2f9, #a4cafc, #a1c1fe, #a1b7ff, #98a1ff, #a085ff, #b560ff, #d200ff);
   width: 80%;
   height: 6%;
   border-radius: 50px;
-  margin-top: 20%;
+  margin-top: 3%;
 }
 
 .registerButton:hover {
