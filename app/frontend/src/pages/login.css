@@ -1,0 +1,83 @@
+.loginModal {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  height: 70vh;
+  width: 40vh;
+}
+
+#loginText {
+  margin-top: 50%;
+}
+
+.loginPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-weight: 400;
+  background-image: linear-gradient(to right top, #3bddff, #64daff, #81d7ff, #99d4fe, #acd2f9, #a4cafc, #a1c1fe, #a1b7ff, #98a1ff, #a085ff, #b560ff, #d200ff);
+}
+
+#loginButton {
+  background-image: linear-gradient(to right, #3bddff, #64daff, #81d7ff, #99d4fe, #acd2f9, #a4cafc, #a1c1fe, #a1b7ff, #98a1ff, #a085ff, #b560ff, #d200ff);
+  width: 80%;
+  height: 6%;
+  border-radius: 50px;
+  margin-top: 20%;
+}
+
+#loginButton:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #a5e5f2, #afe4f5, #b9e3f7, #c3e2f6, #cce1f5, #cadef8, #cadafa, #ccd5fc, #cbcbff, #d0bfff, #dab1ff, #e8a1f8);
+}
+
+#signUpButton {
+  margin-top: 50%;
+  transition: 0.3s;
+}
+
+#signUpButton:hover {
+  color:rgb(95, 95, 95);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#loginForm {
+  margin-top: 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+#loginForm p {
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+#loginForm h2 {
+  align-self: flex-end;
+  text-decoration: none;
+  font-size: 13px;
+  color: rgb(189, 187, 187);
+  transition: 0.3s;
+}
+
+#loginForm h2:hover{
+  color: rgb(121, 121, 121);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.linha {
+  border: 1px solid rgb(189, 187, 187);
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 15px
+}
