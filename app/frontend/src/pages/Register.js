@@ -30,7 +30,7 @@ export default function Register(props) {
     const confirmPassword = userPassword === userConfirmPassword
     const { history } = props
     if(!confirmPassword) {
-      return setBackendRegisterReturned('SENHA DIFERENTE PORRA')
+      return setBackendRegisterReturned('Passwords do not match')
     }
     const request = await fetch('http://localhost:3001/user', {
       method: 'POST',
@@ -65,10 +65,10 @@ export default function Register(props) {
       <div className="loginModal">
 
         <div>
-          <h1 className='loginText'>Register</h1>
+          <h1 className='registerText'>Register</h1>
         </div>
 
-        <form className='loginForm'>
+        <form className='registerForm'>
 
           <p>First name</p>
           <input
@@ -112,7 +112,7 @@ export default function Register(props) {
           />
           <hr className='linha'/>
 
-          <div style={{ height: '5px'}}>
+          <div style={{ height: '50px', width: '180px'}}>
             <p style={{color: 'red' }}>
               {backendRegisterReturned}
             </p>

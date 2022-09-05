@@ -1,12 +1,16 @@
 import React from 'react';
-// import { createBrowserHistory } from "history";
-// const history = createBrowserHistory();
 import './login.css'
 
 function Login(props) {
   function handleClick() {
     const { history } = props;
     history.push('/register')
+  }
+
+  function handleClickRecovery() {
+    // const { history } = props
+    // history.push('/recovery')
+    console.log('EM DESENVOLVIMENTO');
   }
   return (
     <div className="loginPage">
@@ -21,7 +25,7 @@ function Login(props) {
           <p>Password</p>
           <input placeholder='Type your password' className='input' type='password'/>
           <hr className='linha'/>
-          <h2>Forgot password?</h2>
+          <h2 onClick={ () => handleClickRecovery() }>Forgot password?</h2>
         </form>
         <div className='buttons'>
         </div>
