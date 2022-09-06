@@ -9,7 +9,6 @@ export default function Register(props) {
   const [isActivedRegisterButton, setIsActivedRegisterButton] = useState(true);
   const [backendRegisterReturned, setBackendRegisterReturned] = useState();
   
-
   useEffect(() => {
     function checkInputs(userFirstName, userLastName, userEmail, userPassword) {
       const checkFirstName = userFirstName === undefined ? false: userFirstName.length > 3;
@@ -110,7 +109,7 @@ export default function Register(props) {
             type='password'
             onChange={({ target }) => setUserConfirmPassword(target.value)}
           />
-          <hr className='linha'/>
+          <hr clasEmail addressName='linha'/>
 
           <div style={{ height: '50px', width: '180px'}}>
             <p style={{color: 'red' }}>
