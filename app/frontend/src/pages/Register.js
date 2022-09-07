@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import './register.css'
 
 export default function Register(props) {
   const [userFirstName, setUserFirstName] = useState();
   const [userLastName, setUserLastName] = useState();
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
-  const [userConfirmPassword, setUserConfirmPassword] = useState();
   const [isActivedRegisterButton, setIsActivedRegisterButton] = useState(true);
   const [backendRegisterReturned, setBackendRegisterReturned] = useState();
+  const [userRegistered, setUserRegistered] = useState(false);
   
   useEffect(() => {
     function checkInputs(userFirstName, userLastName, userEmail, userPassword) {
@@ -23,14 +24,9 @@ export default function Register(props) {
       }
     };
     checkInputs(userFirstName, userLastName, userEmail, userPassword)
-  }, [userFirstName, userLastName, userEmail, userPassword, userConfirmPassword,])
+  }, [userFirstName, userLastName, userEmail, userPassword])
 
   async function registerButton() {
-    const confirmPassword = userPassword === userConfirmPassword
-    const { history } = props
-    if(!confirmPassword) {
-      return setBackendRegisterReturned('Passwords do not match')
-    }
     const request = await fetch('http://localhost:3001/user', {
       method: 'POST',
       headers: {
@@ -48,7 +44,7 @@ export default function Register(props) {
     if (data.message) {
       return setBackendRegisterReturned(data.message);
     } if (data.ok) {
-      history.push('/')
+      setUserRegistered(true)
     } else {
       return setBackendRegisterReturned('Server problem')
     }
@@ -59,83 +55,74 @@ export default function Register(props) {
     history.push('/')
   };
 
+  if (userRegistered) {
+    return (
+      <h1>Usuario registrado com sucesso</h1>
+    )
+  }
   return(
-    <div className="loginPage">
-      <div className="loginModal">
-
-        <div>
-          <h1 className='registerText'>Register</h1>
-        </div>
-
-        <form className='registerForm'>
-
-          <p>First name</p>
-          <input
-            placeholder='Type your first name'
-            className='input'
-            onChange={({ target }) => setUserFirstName(target.value)}
-          />
-          <hr className='linha'/>
-
-          <p>Last name</p>
-          <input
-            placeholder='Type your last name'
-            className='input'
-            onChange={({ target }) => setUserLastName(target.value)}
-          />
-          <hr className='linha'/>
-
-          <p>E-mail</p>
-          <input
-            placeholder='Type your e-mail'
-            className='input'
-            onChange={({ target }) => setUserEmail(target.value)}
-          />
-            
-          <hr className='linha' style={{backgroundColor: 'red'}}/>
-          <p>Password</p>
-          <input
-            placeholder='Type your password'
-            className='input'
-            type='password'
-            onChange={({ target }) => setUserPassword(target.value)}
-          />
-          <hr className='linha'/>
-
-          <p>Confirm your password</p>
-          <input
-            placeholder='Confirm your password'
-            className='input'
-            type='password'
-            onChange={({ target }) => setUserConfirmPassword(target.value)}
-          />
-          <hr clasEmail addressName='linha'/>
-
-          <div style={{ height: '50px', width: '180px'}}>
-            <p style={{color: 'red' }}>
-              {backendRegisterReturned}
-            </p>
+    <div className="registerPage">
+      <div className="registerModal">
+        <h1>Get Started</h1>
+        <form>
+          <div className="nameForm">
+            <div>
+              <p>First name</p>
+              <input
+                className='input'
+                onChange={({ target }) => setUserFirstName(target.value)}
+              />
+              <hr className='linha'/>
+            </div>
+            <div>
+              <p>Last Name</p>
+              <input
+                className='input'
+                onChange={({ target }) => setUserLastName(target.value)}
+              />
+              <hr className='linha'/>
+            </div>
           </div>
-
+          <div>
+            <div>
+              <p>Email</p>
+              <input
+                className='input'
+                onChange={({ target }) => setUserEmail(target.value)}
+              />
+              <hr className='linha'/>
+            </div>
+            <div>
+              <p>Password</p>
+              <input
+                type='password'
+                className='input'
+                onChange={({ target }) => setUserPassword(target.value)}
+              />
+              <hr className='linha'/>
+            </div>
+          </div>
         </form>
-
-        <div className='buttons'>
-        </div>
-          <button
-            className='registerButton'
-            type='button'
-            disabled={isActivedRegisterButton}
-            onClick={() => registerButton()}
-            >
-              Register
-            </button>
-
+        <p style={{color: 'red', opacity: '0.8'}}>{backendRegisterReturned}</p>
+        <button
+          className='signUpButton'
+          onClick={() => registerButton()}
+          type='button'
+          disabled={isActivedRegisterButton}
+        >
+          Sign Up
+        </button>
+        <div className='alreadyAccont'>
+          <p>
+            Already have an accont?
+          </p>
           <p
-            className='AlreadyRegisteredButton'
+            style={{marginLeft: '5px', color: 'blue'}}
             onClick={() => handleClick()}
           >
-            Already registered?
+            {` Sign In`}
           </p>
+        </div>
       </div>
     </div>
   )

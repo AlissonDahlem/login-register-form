@@ -2,7 +2,7 @@ import React from 'react';
 import './login.css'
 
 function Login(props) {
-  function handleClick() {
+  function signUp() {
     const { history } = props;
     history.push('/register')
   }
@@ -15,22 +15,42 @@ function Login(props) {
   return (
     <div className="loginPage">
       <div className="loginModal">
-        <div>
-          <h1 className='loginText'>Login</h1>
+        <h1>Welcome back</h1>
+        <div className="needAccont">
+          <p>Need an account?</p>
+          <p
+            style={{marginLeft: '5px', color: 'blue'}}
+            onClick={() => signUp()}
+          >
+            Sign Up
+          </p>
         </div>
-        <form className='loginForm'>
-          <p>E-mail</p>
-          <input placeholder='Type your e-mail' className='input'/>
-          <hr className='linha'/>
-          <p>Password</p>
-          <input placeholder='Type your password' className='input' type='password'/>
-          <hr className='linha'/>
-          <h2 onClick={ () => handleClickRecovery() }>Forgot password?</h2>
+        <form>
+          <div>
+            <p>Email</p>
+            <input
+              className="input"
+            />
+            <hr className="linha"/>
+            <p>Password</p>
+            <input
+              className="input"
+              type="password"
+            />
+            <hr className="linha"/>
+          </div>
         </form>
-        <div className='buttons'>
+        <div className='forgotPassword'>
+          <p
+            style={{color: 'blue'}}
+            onClick={() => handleClickRecovery()}
+          >
+            Forgot password?
+          </p>
         </div>
-          <button className='loginButton' type='button'>LOGIN</button>
-          <p className='signUpButton' onClick={() => handleClick()}>SIGN UP</p>
+        <button className="signInButton">
+          Sign In
+        </button>
       </div>
     </div>
   )

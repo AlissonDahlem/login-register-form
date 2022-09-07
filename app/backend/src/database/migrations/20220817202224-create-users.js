@@ -29,6 +29,13 @@ module.exports = {
       createdAt: {
        type: Sequelize.DATE,
        field: 'created_at'
+      },
+      confirmed: {
+        type: Sequelize.BOOLEAN
+      },
+      confirmationCode: {
+        type: Sequelize.STRING,
+        field: 'confirmation_code'
       }
       })
   },

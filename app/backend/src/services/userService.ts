@@ -1,8 +1,8 @@
 import * as bcrypt from 'bcryptjs'
-// import { encodeBase64, compare, hash } from 'bcryptjs';
 import Users from '../database/models/UserModel';
 import PasswordValidator = require('password-validator');
 import * as EmailValidator from 'email-validator'
+import Mail from './mailService';
 
 export default class UserService {
   public validateEmailExists = async (email: string) => {
@@ -45,16 +45,38 @@ export default class UserService {
     return hash
   }
 
+  public createTokenToConfirmUser = () => {
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let token = '';
+
+    for (let i = 0; i < 25; i++) {
+      token += characters[Math.floor(Math.random() * characters.length )];
+    }
+
+    return token;
+  }
+
+  public sendEmailConfirmation = async (firstName: string, email: string, confirmationCode: string) => {
+    Mail.to = email
+    Mail.subject = `Hello ${firstName}, confirm your Email`
+    Mail.message = confirmationCode
+    Mail.sendMail();
+  }
+
   public createUser = async (firstName: string, lastName: string, email: string, password: string) => {
     await this.validateEmailExists(email);
     await this.validatePassword(password)
     const encripted = this.encriptPassword(password)
+    const token = this.createTokenToConfirmUser()
+    await this.sendEmailConfirmation(firstName, email, token)
     await Users.create({
         firstName,
         lastName,
         email,
         password: encripted,
-        roleId: '1'
+        roleId: '1',
+        confirmed: false,
+        confirmationCode: token,
       })
   }
 }
