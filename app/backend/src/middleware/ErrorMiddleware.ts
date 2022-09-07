@@ -2,12 +2,19 @@ import { ErrorRequestHandler } from 'express';
 
 const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
   const { name, message } = err;
+  console.log(name, message);
   switch (name) {
     case 'conflict':
       res.status(409).json({ message });
       break;
     case 'missingFields':
       res.status(400).json({ message });
+      break;
+    case 'notFound':
+      res.status(404).json({ message });
+      break;
+    case 'unauthorized':
+      res.status(401).json({ message });
       break;
     default:
       res.status(500).json({ message });

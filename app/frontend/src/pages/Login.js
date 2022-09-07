@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './login.css'
 
 function Login(props) {
+  const [userEmail, setUserEmail] = useState();
+  const [userPassword, setUserPassword] = useState();
+  const [backendReturned, setBackendReturned] = useState();
+
   function signUp() {
     const { history } = props;
     history.push('/register')
+  }
+
+  async function handleClickSignIn() {
+    const { history } = props
+    const request = await fetch('http://localhost:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          email: userEmail,
+          password: userPassword,
+      }),
+      cache: 'default',
+    })
+    const data = await request.json()
+    if (data.message) {
+      return setBackendReturned(data.message);
+    } if (data.token) {
+      history.push('/DEUCERTO')
+    } else {
+      return setBackendReturned('Server problem')
+    }
   }
 
   function handleClickRecovery() {
@@ -30,12 +57,14 @@ function Login(props) {
             <p>Email</p>
             <input
               className="input"
+              onChange={({ target }) => setUserEmail(target.value)}
             />
             <hr className="linha"/>
             <p>Password</p>
             <input
               className="input"
               type="password"
+              onChange={({ target }) => setUserPassword(target.value)}
             />
             <hr className="linha"/>
           </div>
@@ -48,7 +77,8 @@ function Login(props) {
             Forgot password?
           </p>
         </div>
-        <button className="signInButton">
+          <p style={{color: 'red'}}>{ backendReturned }</p>
+        <button className="signInButton" onClick={() => handleClickSignIn()}>
           Sign In
         </button>
       </div>

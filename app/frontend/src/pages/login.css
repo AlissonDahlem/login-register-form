@@ -4,7 +4,7 @@
     width: 100vw;
     display: flex;
     align-items: end;
-  }
+  } 
   
   .loginModal {
     background-color: white;
@@ -17,11 +17,13 @@
     align-items: center;
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
+    animation: downtop 900ms;
   }
   
   .loginModal h1 {
     margin-bottom: 30%;
-    font-size: 40px
+    font-size: 40px;
+    animation: topdown  700ms  350ms  backwards;
   }
 
   .loginModal p {
@@ -37,6 +39,7 @@
     width: 80vw;
   }
 
+
   .linha {
     border-top: 1px solid rgb(152, 217, 243);
     margin: 5px;
@@ -48,9 +51,15 @@
     width: 80vw;
     height: 40px;
     border-radius: 50px;
-    background-color: #3A459D;
+    background-color: #2f3fb3;
     color: white;
     margin-top: 10%;
+    animation: topdown 700ms;
+  }
+
+  .signInButton:hover{
+     background-color: #161f61;
+     font-weight: bold;
   }
 
   .needAccont {
@@ -77,8 +86,233 @@
     font-size: 10px;
   }
 
+  @keyframes topdown{
+    0%{
+    opacity: 0;
+    transform: translateY(-15px);
+    }
+   
+    100%{
+     opacity: 1;
+     transform: translateY(0);
+    }
+  }
+  
+  @keyframes downtop{
+    0%{
+      opacity: 0;
+      transform: translateY(15px);
+      }
+  
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
 }
 
+@media screen and (max-width: 900px){
+
+  .loginPage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: end;
+  } 
+  
+  .loginModal {
+    background-color: white;
+    opacity: 0.9 ;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    animation: downtop 900ms;
+  }
+  
+  .loginModal h1 {
+    margin-bottom: 10%;
+    font-size: 40px;
+    animation: topdown  700ms  350ms  backwards;
+  }
+
+  .loginModal p {
+    font-size: 12px;
+    margin-top: 15px
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 80vw;
+  }
+
+  .linha {
+    border-top: 1px solid rgb(152, 217, 243);
+    margin: 5px;
+    color: rgb(152, 217, 243);
+    margin-bottom: 20px
+  }
+
+  .signInButton{
+    width: 80vw;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #2f3fb3;
+    color: white;
+    margin-top: 10%;
+    animation: topdown 700ms;
+  }
+
+  .signInButton:hover{
+     background-color: #161f61;
+     font-weight: bold;
+  }
+
+  .needAccont {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    text-align: end;
+    margin-left: 45%;
+  }
+
+  .needAccont p {
+    font-size: 10px;
+  }
+
+  .forgotPassword {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    text-align: end;
+    margin-left: 54%;
+  }
+
+  .forgotPassword p {
+    font-size: 10px;
+  }
+
+  @keyframes topdown{
+    0%{
+    opacity: 0;
+    transform: translateY(-15px);
+    }
+   
+    100%{
+     opacity: 1;
+     transform: translateY(0);
+    }
+  }
+  
+  @keyframes downtop{
+    0%{
+      opacity: 0;
+      transform: translateY(15px);
+      }
+  
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+}
+
+@media screen and (min-width:900px){
 
 
+  body{
+    background: #E5E5E5;
+  }
+
+  .loginPage {
+    width: 1000px;
+    margin: 0px auto;
+    padding-top: 65px;
+  } 
+/*   
+  .loginModal{
+    
+  }
+
+  .loginModal h1 {
+   
+  }
+
+  .loginModal p {
+    
+  } */
+
+  .input{
+    background: #edf0f2;
+    border: 1px solid #E6E6F0;
+    border-radius: 8px;
+    height: 56px;
+    padding: 0 24px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #b2aeba;
+  }
+/* 
+  .linha {
+   
+  }
+
+  .signInButton{
+    
+  }
+
+  .signInButton:hover{
+    
+  }
+
+  .needAccont {
+   
+  }
+
+  .needAccont p {
+    
+  }
+
+  .forgotPassword {
+   
+  }
+
+  .forgotPassword p {
+    
+  } */
+
+  @keyframes topdown{
+    0%{
+    opacity: 0;
+    transform: translateY(-15px);
+    }
+   
+    100%{
+     opacity: 1;
+     transform: translateY(0);
+    }
+  }
+  
+  @keyframes downtop{
+    0%{
+      opacity: 0;
+      transform: translateY(15px);
+      }
+  
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  
+}

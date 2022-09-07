@@ -17,16 +17,18 @@
     align-items: center;
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
+    animation: downtop 900ms;
   }
   
   .registerModal h1 {
-    margin-bottom: 30%;
-    font-size: 40px
+    margin-bottom: 10%;
+    font-size: 40px;
+    animation: topdown  700ms  350ms  backwards;
   }
 
   .registerModal p {
     font-size: 12px;
-    margin-top: 15px
+    margin-top: 15px;
   }
 
   .input {
@@ -38,10 +40,104 @@
   }
 
   .linha {
-    border-top: 1px solid rgb(152, 217, 243);
+    border-top: 1px solid #4251c0;
     margin: 5px;
-    color: rgb(152, 217, 243);
-    margin-bottom: 20px
+    color: #4251c0;
+    margin-bottom: 20px;
+
+  }
+
+  .signUpButton{
+    width: 80vw;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #3A459D;
+    color: white;
+    margin-top: 10%;
+  }
+
+  .alreadyAccont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center
+  }
+
+  @keyframes topdown{
+    0%{
+    opacity: 0;
+    transform: translateY(-15px);
+    }
+   
+    100%{
+     opacity: 1;
+     transform: translateY(0);
+    }
+  }
+  
+  @keyframes downtop{
+    0%{
+      opacity: 0;
+      transform: translateY(15px);
+      }
+  
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+}
+
+
+@media screen and (min-width: 900px){
+
+  .registerPage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: end;
+  }
+  
+  .registerModal {
+    background-color: white;
+    opacity: 0.9 ;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    animation: downtop 900ms;
+  }
+  
+  .registerModal h1 {
+    margin-bottom: 10%;
+    font-size: 40px;
+    animation: topdown  700ms  350ms  backwards;
+  }
+
+  .registerModal p {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 80vw;
+  }
+
+  .linha {
+    border-top: 1px solid #4251c0;
+    margin: 5px;
+    color: #4251c0;
+    margin-bottom: 20px;
+
   }
 
   .signUpButton{
@@ -60,3 +156,5 @@
     justify-content: center
   }
 }
+
+ 

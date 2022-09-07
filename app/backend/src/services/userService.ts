@@ -59,7 +59,7 @@ export default class UserService {
   public sendEmailConfirmation = async (firstName: string, email: string, confirmationCode: string) => {
     Mail.to = email
     Mail.subject = `Hello ${firstName}, confirm your Email`
-    Mail.message = confirmationCode
+    Mail.message = `http://localhost:3001/confirmationCode/${confirmationCode}`
     Mail.sendMail();
   }
 
