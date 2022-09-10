@@ -51,3 +51,5 @@ Products.belongsTo(Users, {
   targetKey: 'id',
   as: 'role_id'
 })
+
+export default Products;

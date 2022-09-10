@@ -46,7 +46,7 @@ export default class UserService {
   }
 
   public createTokenToConfirmUser = () => {
-    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&';
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let token = '';
 
     for (let i = 0; i < 24; i++) {
@@ -58,8 +58,12 @@ export default class UserService {
 
   public sendEmailConfirmation = async (firstName: string, email: string, confirmationCode: string) => {
     Mail.to = email
-    Mail.subject = `Hello ${firstName}, confirm your Email`
-    Mail.message = `http://localhost:3001/login/${confirmationCode}`
+    Mail.subject = `Hello ${firstName}, validate your accont`
+    Mail.message = `<h1>Email Confirmation</h1>
+        <h2>Hello ${firstName}</h2>
+        <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+        <a href=http://localhost:3000/validate/${confirmationCode}> Click here</a>
+        </div>`,
     Mail.sendMail();
   }
 

@@ -12,7 +12,7 @@ export default class AuthService {
       throw error;
     }
     if (user.confirmed === false) {
-      const error = new Error('You need to validate your accont, please check your email')
+      const error = new Error('You need to validate your account, please check your email')
       error.name = 'unauthorized'
       throw error;
     }
@@ -46,6 +46,14 @@ export default class AuthService {
   }
 
   public validateAccont = async(confirmationCode: string) => {
-    await Users.update({ confirmed: true }, { where: { confirmationCode } })
+    const user = await Users.update({ confirmed: true }, { where: { confirmationCode } })
+    // if (user) {
+    //   return {ok: "Accont actived"}
+    // } else {
+    //   const error = new Error('Token not found');
+    //   error.name = 'notFound';
+    //   throw error;
+    // }
+    return user
   }
 }

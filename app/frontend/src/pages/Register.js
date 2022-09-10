@@ -8,7 +8,7 @@ export default function Register(props) {
   const [userPassword, setUserPassword] = useState();
   const [isActivedRegisterButton, setIsActivedRegisterButton] = useState(true);
   const [backendRegisterReturned, setBackendRegisterReturned] = useState();
-  const [userRegistered, setUserRegistered] = useState(false);
+  const [successfullyRegistered, setSuccessfullyRegistered] = useState();
   
   useEffect(() => {
     function checkInputs(userFirstName, userLastName, userEmail, userPassword) {
@@ -44,7 +44,7 @@ export default function Register(props) {
     if (data.message) {
       return setBackendRegisterReturned(data.message);
     } if (data.ok) {
-      setUserRegistered(true)
+      setSuccessfullyRegistered('Please Verify Your Email!')
     } else {
       return setBackendRegisterReturned('Server problem')
     }
@@ -55,11 +55,6 @@ export default function Register(props) {
     history.push('/')
   };
 
-  if (userRegistered) {
-    return (
-      <h1>Usuario registrado com sucesso</h1>
-    )
-  }
   return(
     <div className="registerPage">
       <div className="registerModal">
@@ -104,6 +99,7 @@ export default function Register(props) {
           </div>
         </form>
         <p style={{color: 'red', opacity: '0.8'}}>{backendRegisterReturned}</p>
+        <p style={{color: 'green', opacity: '0.8'}}>{successfullyRegistered}</p>
         <button
           className='signUpButton'
           onClick={() => registerButton()}

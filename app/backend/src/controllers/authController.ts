@@ -26,7 +26,9 @@ export default class AuthController {
   public validateAccont:RequestHandler = async (req, res): Promise<void> => {
     const { confirmationCode } = req.params
 
-    await this._authService.validateAccont(confirmationCode)
-    res.status(200).json({ok: 'confirmed'})
+    const activated = await this._authService.validateAccont(confirmationCode)
+    
+    res.status(200).json({activated})
+
   }
 }

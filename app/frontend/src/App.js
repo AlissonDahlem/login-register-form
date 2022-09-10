@@ -4,7 +4,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import RecoveryPassword from './pages/RecoveryPassword';
-import RegisterProduct from './pages/RegisterProduct'
+import RegisterProduct from './pages/RegisterProduct';
+import ValidateAccont from './pages/ValidateAccont';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Route exact path='/register' component={ Register }/>
       <Route exact path ='/recovery' component={ RecoveryPassword }/>
       <Route exact path = '/product/register' component={ RegisterProduct } />
+      <Route exact path='/validate/:token' component={ ValidateAccont }/>
       <Route component={ NotFound }/>
     </Switch>
   );
