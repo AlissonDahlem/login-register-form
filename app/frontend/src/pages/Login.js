@@ -24,20 +24,22 @@ function Login(props) {
       }),
       cache: 'default',
     })
+
     const data = await request.json()
+
     if (data.message) {
       return setBackendReturned(data.message);
     } if (data.token) {
-      history.push('/DEUCERTO')
+      sessionStorage.setItem('user', data.token)
+      history.push('/main')
     } else {
-      return setBackendReturned('Server problem')
+      return setBackendReturned('Server problem, try again')
     }
   }
 
   function handleClickRecovery() {
-    // const { history } = props
-    // history.push('/recovery')
-    console.log('EM DESENVOLVIMENTO');
+    const { history } = props
+    history.push('/recovery')
   }
   return (
     <div className="loginPage">

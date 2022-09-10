@@ -1,8 +1,9 @@
+import { sign, verify } from 'jsonwebtoken';
 import Users from '../database/models/UserModel';
 import { compare } from 'bcryptjs';
 
 export default class AuthService {
-  public validadeUserActived = async (email: string) => {
+  public validateIfUserIsActived = async (email: string) => {
     const user = await Users.findOne({where: { email }}) as Users;
 
     if (!user) {
@@ -29,7 +30,19 @@ export default class AuthService {
       error.name = 'Unauthorized';
       throw error;
     }
-    await this.validadeUserActived(email);
+    await this.validateIfUserIsActived(email);
+
+    const { password: userPassword, ...userWithoutPassword } = user
+
+    const token = sign(
+      userWithoutPassword,
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: '1d',
+        algorithm: 'HS256',
+      }
+    )
+    return token
   }
 
   public validateAccont = async(confirmationCode: string) => {

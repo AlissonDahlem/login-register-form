@@ -20,7 +20,7 @@ export default class AuthController {
 
     const token = await this._authService.login(email, password);
 
-    res.status(200).json({ok: true})
+    res.status(200).json({token})
   }
 
   public validateAccont:RequestHandler = async (req, res): Promise<void> => {
